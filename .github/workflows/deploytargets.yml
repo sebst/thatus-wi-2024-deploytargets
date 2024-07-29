@@ -4,6 +4,7 @@ on: workflow_dispatch
 jobs:
   install_python:
     runs-on: ubuntu-latest
+    environment: env1
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -11,6 +12,7 @@ jobs:
           python-version: '3.x'
   apt_update:
     runs-on: ubuntu-latest
+    environment: env1
     needs: install_python
     steps:
       - name: Apt Update
@@ -24,6 +26,7 @@ jobs:
           echo "::endgroup::"
   install_python_from_apt:
     runs-on: ubuntu-latest
+    environment: env1
     needs: apt_update
     steps:
       - name: Apt Update
@@ -36,6 +39,7 @@ jobs:
           echo "::endgroup::"
   install_mysql_from_apt:
     runs-on: ubuntu-latest
+    environment: env1
     needs: apt_update
     steps:
       - name: Apt Update
